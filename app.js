@@ -2,7 +2,7 @@
    CONFIG: everything personal lives here. Edit freely.
    ===================================================================== */
 const CONFIG = {
-  name: '',                 // her name or nickname, e.g. 'Pihu'. Leave '' to just say "you".
+  name: 'Kriya',            // her name or nickname, e.g. 'Pihu'. Leave '' to just say "you".
   unlockAt: null,           // e.g. '2026-11-02T00:00:00+05:30' to lock until her birthday. null = always open.
   candles: 5,               // how many candles on the cake
   from: '— me',             // how the message is signed
