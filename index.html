@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0a0718">
+<title>Bubbles For You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Pinyon+Script&family=VT323&family=Noto+Sans+Devanagari:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="aurora"><i></i><i></i><i></i></div>
+<canvas id="sky"></canvas>
+<div id="grain"></div>
+<div id="progress"></div>
+<button id="mute" aria-label="Toggle sound" hidden>♪</button>
+<div id="flash"></div>
+
+<!-- 0 · GATE: hold to inflate -->
+<section class="scene" id="s-gate" data-i="0">
+  <div class="center col gap">
+    <p class="kicker fade-seq">a small world, made for one person</p>
+    <h1 class="title fade-seq">for <em id="gate-name">you</em></h1>
+    <p class="sub fade-seq">sound on · lights low · pop anything that floats</p>
+    <div id="countdown" hidden>
+      <p class="sub">not yet. this opens on your day.</p>
+      <div class="cd"><span id="cd-d">0</span>d <span id="cd-h">0</span>h <span id="cd-m">0</span>m <span id="cd-s">0</span>s</div>
+    </div>
+    <div id="hold" class="hold fade-seq">
+      <div class="bub-grow" id="bub-grow"></div>
+      <span>press &amp; hold to blow</span>
+    </div>
+  </div>
+</section>
+
+<!-- 1 · EYES -->
+<section class="scene" id="s-eyes" data-i="1">
+  <div class="eyes-wrap">
+    <div class="eyes-img"><img src="media/eyes2.jpg" alt="" draggable="false"></div>
+    <div class="lash"></div>
+  </div>
+  <p class="hint" id="eyes-hint">swipe up · slowly</p>
+  <div class="eyes-lines">
+    <p>the eyes, they never lie.</p>
+    <p>so I'll keep this honest.</p>
+    <p>happy birthday.</p>
+    <p class="small">this is just a small something, made for you.</p>
+  </div>
+  <button class="next" hidden>continue</button>
+</section>
+
+<!-- 2 · DEVELOP -->
+<section class="scene" id="s-develop" data-i="2">
+  <header class="scene-head">
+    <p class="kicker">one</p>
+    <h2>you, <em>developing</em></h2>
+  </header>
+  <div class="table" id="table"></div>
+  <p class="hint" id="dev-hint">rub the film to bring it to life</p>
+  <button class="next" hidden>keep going</button>
+</section>
+
+<!-- 3 · METRO -->
+<section class="scene" id="s-metro" data-i="3">
+  <div class="metro-sign">
+    <div class="line-badge"></div>
+    <div>
+      <div class="ms-hi">गुलाबी लाइन · जन्मदिन विशेष</div>
+      <div class="ms-en">The Pink Line · towards <b>Your Birthday</b></div>
+    </div>
+  </div>
+  <div class="led"><div class="led-track" id="led">please mind the gap between the train and the platform ·</div></div>
+  <div class="window" id="window">
+    <div class="win-media" id="win-media"></div>
+    <div class="door l"></div><div class="door r"></div>
+    <p class="win-cap" id="win-cap"></p>
+  </div>
+  <div class="map" id="map">
+    <div class="rail"></div><div class="rail-fill" id="rail-fill"></div>
+    <div class="train" id="train">🚇</div>
+  </div>
+  <div class="metro-ctl">
+    <button class="pill" id="next-station">next station ›</button>
+  </div>
+  <button class="next" hidden>get off here</button>
+</section>
+
+<!-- 4 · OPEN WHEN (bubbles) -->
+<section class="scene" id="s-openwhen" data-i="4">
+  <header class="scene-head">
+    <p class="kicker">three</p>
+    <h2>for the days<br><em>this year brings</em></h2>
+  </header>
+  <div class="ow-field" id="ow-field"></div>
+  <div class="glass-card" id="ow-card"><p class="ow-for" id="ow-for"></p><p class="ow-msg" id="ow-msg"></p><button class="pill ghost" id="ow-close">let it float back</button></div>
+  <p class="hint" id="ow-hint">pop one · keep the rest for later</p>
+  <button class="next" hidden>continue</button>
+</section>
+
+<!-- 5 · CINEMA -->
+<section class="scene" id="s-cinema" data-i="5">
+  <header class="scene-head">
+    <p class="kicker">four</p>
+    <h2>you, <em>in motion</em></h2>
+  </header>
+  <div class="reel" id="reel"></div>
+  <p class="hint">swipe the reel · tap a frame for sound</p>
+  <button class="next">continue</button>
+</section>
+
+<!-- 6 · WAND -->
+<section class="scene" id="s-wand" data-i="6">
+  <header class="scene-head">
+    <p class="kicker">five</p>
+    <h2>blow some bubbles.<br><em>catch the golden ones.</em></h2>
+  </header>
+  <canvas id="wand-cv"></canvas>
+  <div class="glass-card small" id="rem-card"><p id="rem-text"></p><span id="rem-n"></span></div>
+  <p class="hint" id="wand-hint">drag your finger anywhere</p>
+  <button class="next" hidden>continue</button>
+</section>
+
+<!-- 7 · CAKE -->
+<section class="scene" id="s-cake" data-i="7">
+  <header class="scene-head">
+    <p class="kicker">six</p>
+    <h2 id="cake-title">close your eyes.<br><em>make a wish.</em></h2>
+  </header>
+  <div class="cake-zone">
+    <div class="cake" id="cake">
+      <div class="candles" id="candles"></div>
+      <div class="tier t3"><div class="drip"></div></div>
+      <div class="tier t2"><div class="drip"></div></div>
+      <div class="tier t1"><div class="drip"></div></div>
+      <div class="plate"></div>
+    </div>
+  </div>
+  <div class="cake-ctl" id="cake-ctl">
+    <button class="pill" id="mic-btn">🌬️ blow (uses mic)</button>
+    <p class="hint small">or tap each flame</p>
+  </div>
+  <div class="wish" id="wish" hidden>
+    <textarea id="wish-text" maxlength="160" placeholder="type your wish… it floats away and nobody reads it, not even me"></textarea>
+    <button class="pill" id="wish-go">put it in a bubble ✦</button>
+  </div>
+  <div class="hb" id="hb">Happy Birthday</div>
+  <button class="next" hidden>one more thing</button>
+</section>
+
+<!-- 8 · MESSAGE IN A BUBBLE -->
+<section class="scene" id="s-message" data-i="8">
+  <div class="big-bubble" id="big-bubble">
+    <div class="bb-film"></div>
+    <div class="bb-words" id="bb-words"></div>
+  </div>
+  <p class="hint" id="msg-hint">press &amp; hold the bubble</p>
+  <div class="glass-card msg" id="msg-card"><div id="msg-text"></div></div>
+  <button class="next" hidden>last one</button>
+</section>
+
+<!-- 9 · FINALE -->
+<section class="scene" id="s-final" data-i="9">
+  <canvas id="dust"></canvas>
+  <div class="final-text">
+    <p id="ft1">wherever this year takes you</p>
+    <p id="ft2">I hope it's kind to you</p>
+    <h1 id="ft3" class="script">Happy Birthday</h1>
+    <p id="ft4" class="sub">touch the stars · tap the sky for more bubbles</p>
+  </div>
+  <div id="photo-bubbles"></div>
+  <div class="final-end" id="final-end">
+    <p>made with care, just for you.</p>
+    <button class="pill ghost" id="replay">float through it again</button>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
